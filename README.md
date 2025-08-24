@@ -53,12 +53,6 @@ npm run build
 npm test
 ```
 
-### Publish
-
-```bash
-npm run deploy
-```
-
 ## 私有 Registry 发布指南
 
 本项目配置为发布到私有的 `@efanworks` 域。
@@ -66,7 +60,7 @@ npm run deploy
 1. **启动本地 Registry**
 
    ```bash
-   ./scripts/start-local-registry.sh
+   npm run registry:local
    ```
 
    服务将在 http://localhost:4873 上运行
@@ -99,7 +93,7 @@ npm run deploy
 
    ```bash
    # 使用发布脚本（处理代理问题、读取本地～/.npm_tokens中的令牌）
-   ./scripts/publish-to-local.sh
+   npm run deploy:local
    ```
 
 ## **轮换和撤销 Token**
