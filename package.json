@@ -1,6 +1,6 @@
 {
   "name": "@efanworks/calculator",
-  "version": "1.0.1-alpha.5",
+  "version": "1.0.1-alpha.6",
   "description": "A simple calculator package that provides a sum function",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,8 @@
     "build": "tsc",
     "test": "jest",
     "prepublishOnly": "npm run build && npm run test",
-    "deploy": "npm publish --access restricted"
+    "registry": "./scripts/start-local-registry.sh",
+    "deploy": "./scripts/publish-to-local.sh"
   },
   "keywords": [
     "calculator",

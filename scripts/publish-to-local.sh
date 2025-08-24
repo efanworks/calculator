@@ -2,22 +2,6 @@
 
 # 本脚本演示如何安全地设置 TOKEN 并发布包
 
-# 保存当前代理设置（如果有）
-OLD_HTTP_PROXY=$http_proxy
-OLD_HTTPS_PROXY=$https_proxy
-OLD_ALL_PROXY=$all_proxy
-
-# 临时取消设置代理变量，避免本地连接经过代理
-unset http_proxy
-unset https_proxy
-unset HTTP_PROXY
-unset HTTPS_PROXY
-unset all_proxy
-unset ALL_PROXY
-
-# 显示已清除代理设置的消息
-echo "已临时清除代理设置用于本地连接"
-
 # 从环境变量或配置文件加载 TOKEN
 if [ -f ~/.npm_tokens ]; then
   # 从配置文件加载 TOKEN (格式: export NPM_TOKEN="your-token")
@@ -46,15 +30,4 @@ fi
 
 # 构建并发布包到本地 registry
 echo "使用 TOKEN 发布包到本地 registry..."
-npm run deploy
-
-# 恢复之前的代理设置（如果有）
-if [ -n "$OLD_HTTP_PROXY" ]; then
-  export http_proxy=$OLD_HTTP_PROXY
-fi
-if [ -n "$OLD_HTTPS_PROXY" ]; then
-  export https_proxy=$OLD_HTTPS_PROXY
-fi
-if [ -n "$OLD_ALL_PROXY" ]; then
-  export all_proxy=$OLD_ALL_PROXY
-fi
+npm publish

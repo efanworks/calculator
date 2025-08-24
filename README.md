@@ -80,11 +80,7 @@ npm run deploy
    npm token create --registry http://localhost:4873
    ```
 
-   注意：如果遇到代理问题（[代理问题排查指南](./PROXY_TROUBLESHOOTING.md)），请临时禁用代理：
-
-   ```bash
-   unset http_proxy https_proxy
-   ```
+   注意：如果遇到代理问题（[代理问题排查指南](./PROXY_TROUBLESHOOTING.md)），代理软件可能未正确配置如何处理对本地服务的请求，已通过配置 .npmrc 解决该问题。
 
    获取令牌后，设置环境变量，或者创建一个本地配置文件（不提交到 Git）：
 
