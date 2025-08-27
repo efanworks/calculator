@@ -7,5 +7,5 @@ if ! command -v verdaccio &> /dev/null; then
 fi
 
 # Start Verdaccio
-echo "Starting private NPM registry at http://localhost:4873/"
+echo "Starting private NPM registry at http://120.55.115.214:4873/"
 verdaccio
