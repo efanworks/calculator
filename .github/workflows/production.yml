@@ -1,0 +1,59 @@
+name: Production Release Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+
+      # 上传构建产物，供发布任务使用
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: |
+            dist
+            package.json
+            .npmrc
+
+  publish:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    # 需要人工确认发布
+    environment:
+      name: production
+      url: ${{ steps.publish-url.outputs.registry-url }}
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-output
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "http://120.55.115.214:4873/"
+          scope: "@efanworks"
+
+      - name: Publish to Registry
+        run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - id: publish-url
+        run: echo "::set-output name=registry-url::http://120.55.115.214:4873/-/web/detail/@efanworks/calculator"
