@@ -10,7 +10,6 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublishOnly": "npm install && npm run build && npm run test",
     "registry:local": "./scripts/start-local-registry.sh",
     "deploy:local": "./scripts/publish-to-local.sh"
   },
