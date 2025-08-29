@@ -29,7 +29,6 @@ jobs:
           path: |
             dist
             package.json
-            .npmrc
 
   publish:
     needs: build-and-test
@@ -56,4 +55,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - id: publish-url
-        run: echo "::set-output name=registry-url::http://120.55.115.214:4873/-/web/detail/@efanworks/calculator"
+        run: echo "registry-url=http://120.55.115.214:4873/-/web/detail/@efanworks/calculator" >> $GITHUB_OUTPUT
