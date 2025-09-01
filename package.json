@@ -1,6 +1,6 @@
 {
   "name": "@efanworks/calculator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple calculator package that provides a sum function",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,8 @@
     "build": "tsc",
     "test": "jest",
     "registry:local": "./scripts/start-local-registry.sh",
-    "deploy:local": "./scripts/publish-to-local.sh"
+    "deploy:local": "./scripts/publish-to-local.sh",
+    "patch": "npm version patch --no-git-tag-version"
   },
   "keywords": [
     "calculator",
