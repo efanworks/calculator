@@ -1,13 +1,10 @@
-name: Production Release Pipeline
+name: Release
 
 on:
   workflow_dispatch:
   push:
-    branches: [master]
-    paths-ignore:
-      - "README.md"
-      - "docs/**"
-      - ".npmrc"
+    tags:
+      - "v*"
 
 jobs:
   build-test:
