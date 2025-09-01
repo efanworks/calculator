@@ -1,6 +1,6 @@
 {
   "name": "@efanworks/calculator",
-  "version": "1.0.4-alpha.1",
+  "version": "1.0.4",
   "description": "A simple calculator package that provides a sum function",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
