@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - "README.md"
       - "docs/**"
+      - ".npmrc"
 
 jobs:
   build-test:
@@ -29,6 +30,8 @@ jobs:
           path: |
             dist
             package.json
+            README.md
+            PROXY_TROUBLESHOOTING.md
 
   publish:
     needs: build-test
